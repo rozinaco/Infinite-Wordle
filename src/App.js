@@ -13,9 +13,9 @@ function App() {
       <nav>
         <h1>Infinite Wordle</h1>
       </nav>
-      <AppContext.Provider value ={{ board, setBoard }}>
-      <Board />
-      <Keyboard />
+      <AppContext.Provider value={{ board, setBoard }}>
+        <Board />
+        <Keyboard />
       </AppContext.Provider>
     </div>
   );
