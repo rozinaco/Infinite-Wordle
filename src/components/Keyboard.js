@@ -7,8 +7,8 @@ function Keyboard() {
 
   return (
     <div className = "keyboard"> 
-    <div className = "line1">{keys1.map((Key) => 
-    return <div> {key} </div>
+    <div className = "line1">{keys1.map((key) => {
+      return <div> {key} </div>
   })} </div>
     <div className = "line2"> </div>
     <div className = "line3"> </div>
