@@ -1,20 +1,21 @@
-import React from 'react'
+import React from "react";
 import { useContext } from "react";
 import { AppContext } from "../App";
 
-function Key({keyVal, bigKey}) {
-  const { board, setBoard } = useContext(AppContext);
+function Key({ keyVal, bigKey }) {
+  const { board, setBoard, currAttempt, setCurrAttempt } = useContext(AppContext);
   const selectLetter = () => {
-  
-    const newBoard = [...board]
-    newBoard[0][0] = keyVal
-    setBoard(newBoard)
-    
-  }
+    if (currAttempt.letterPos > 4) return;
+    const newBoard = [...board];
+    newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal;
+    setBoard(newBoard);
+    setCurrAttempt({ ...currAttempt, letterPos: currAttempt.letterPos + 1 });
+  };
   return (
-    <div className = "key" id={bigKey && "big"} onClick={selectLetter}>
-      {keyVal}</div>
-  )
+    <div className="key" id={bigKey && "big"} onClick={selectLetter}>
+      {keyVal}
+    </div>
+  );
 }
 
-export default Key
+export default Key;
