@@ -10,7 +10,7 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currAttempt, setCurrAttempt] = useState({attempt:0,letterPos:0});
 
-const onSelectLetter = ()=> {
+const onSelectLetter = (keyVal)=> {
   if (currAttempt.letterPos > 4) return;
   const newBoard = [...board];
   newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal;
@@ -35,7 +35,7 @@ const onEnter = ()=> {
       <nav>
         <h1>Infinite Wordle</h1>
       </nav>
-      <AppContext.Provider value={{ board, setBoard, currAttempt, setCurrAttempt}}>
+      <AppContext.Provider value={{ board, setBoard, currAttempt, setCurrAttempt, onDelete, onEnter, onSelectLetter}}>
         <div className ="game">
           <Board />
           <Keyboard />
