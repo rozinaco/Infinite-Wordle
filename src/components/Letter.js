@@ -10,12 +10,8 @@ function Letter({ letterPos, attemptVal }) {
   const almost = !correct && letter !== "" && correctWord.includes(letter);
 
   const letterState =
-    currAttempt.attempt > attemptVal && 
-    (correct
-      ? "correct"
-      : almost
-      ? "almost"
-      : "error")
+    currAttempt.attempt > attemptVal &&
+    (correct ? "correct" : almost ? "almost" : "error");
   return (
     <div className="letter" id={letterState}>
       {""}
