@@ -1,6 +1,7 @@
 import React, { useState, createContext, useEffect } from "react";
 import "./App.css";
 import Board from "./components/Board";
+import GameOver from "./components/GameOver";
 import Keyboard from "./components/Keyboard";
 import { boardDefault, generateWordSet } from "./Words";
 
@@ -10,7 +11,11 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letterPos: 0 });
   const [wordSet, setWordSet] = useState(new Set());
-  const [disableLetters, setDisabledLetters] = useState([]);
+  const [disabledLetters, setDisabledLetters] = useState([]);
+  const [gameOver, setGameOver] = useState({
+    gameOver: false,
+    guessedWord: false,
+  });
 
   const correctWord = "RIGHT";
 
@@ -45,8 +50,13 @@ function App() {
     } else {
       alert("wordNotFound");
     }
-  if (currWord === correctWord)
-  alert("Game Ended")
+    if (currWord === correctWord) {
+      setGameOver({ gameOver: true, guessedWord: true });
+      return;
+    }
+    if (currAttempt.attempt === 5) {
+      setGameOver({ gameOver: true, guessedWord: false });
+    }
   };
   return (
     <div className="App">
@@ -64,12 +74,14 @@ function App() {
           onSelectLetter,
           correctWord,
           setDisabledLetters,
-          disableLetters
+          disabledLetters,
+          gameOver,
+          setGameOver,
         }}
       >
         <div className="game">
           <Board />
-          <Keyboard />
+          {gameOver.gameOver ? <GameOver/> : <Keyboard />}{" "}
         </div>
       </AppContext.Provider>
     </div>
