@@ -18,7 +18,6 @@ function App() {
     guessedWord: false,
   });
 
-
   useEffect(() => {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
