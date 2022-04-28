@@ -4,7 +4,7 @@ import { AppContext } from "../App";
 import Key from "./Key";
 
 function Keyboard() {
-  const { onEnter, OnDelete, onSelectLetter, disabledLetters } = useContext(AppContext);
+  const { onEnter, onDelete, onSelectLetter, disabledLetters } = useContext(AppContext);
 
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -14,7 +14,7 @@ function Keyboard() {
     if (event.key === "Enter") {
       onEnter();
     } else if (event.key === "Backspace") {
-      OnDelete();
+      onDelete();
     } else {
       keys1.forEach((key) => {
         if (event.key.toLowerCase()=== key.toLowerCase()) {
